@@ -11,7 +11,7 @@ public class Main extends JFrame implements KeyListener, FocusListener{
     setTitle("Move Arround");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     JLabel playerContainer = new JLabel(new ImageIcon("player.png"));
-    Player player = new Player(playerContainer);
+    Player player = new Player(playerContainer, size);
     JPanel focusBox = new JPanel();
     focusBox.setBounds(100,100,size.width-100,size.height-100);
     focusBox.setBackground(Color.Grey);
