@@ -1,14 +1,17 @@
 package moveArround;
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class Player{
   private int x;
   private int y;
-  private int speed;
-  private Dimention size;
-  private Dimention windowSize;
-  public Player(JLabel parent, Dimention window){
+  private final int speed;
+  private final Dimension size;
+  private final Dimension windowSize;
+  private final JLabel parent;
+  public Player(JLabel parent, Dimension window){
+    this.parent=parent;
     size=parent.getPreferredSize();
     windowSize=window;
     x=0;
