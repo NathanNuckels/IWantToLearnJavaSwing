@@ -1,4 +1,6 @@
 package moveArround;
+import org.jetbrains.annotations.NotNull;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
@@ -10,9 +12,10 @@ public class Player{
   private final Dimension size;
   private final Dimension windowSize;
   private final JLabel parent;
-  public Player(JLabel parent, Dimension window){
+  public Player(@NotNull JLabel parent, Dimension window){
     this.parent=parent;
     size=parent.getPreferredSize();
+    this.parent.setBounds(0,0,size.width,size.height);
     windowSize=window;
     x=0;
     y=0;

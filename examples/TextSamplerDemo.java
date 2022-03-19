@@ -12,19 +12,18 @@ import javax.swing.text.*;
  
 import java.awt.*;              //for layout managers and more
 import java.awt.event.*;        //for action events
- 
-import java.net.URL;
+
 import java.io.IOException;
  
+@SuppressWarnings("SpellCheckingInspection")
 public class TextSamplerDemo extends JPanel
                              implements ActionListener {
-    private String newline = "\n";
     protected static final String textFieldString = "JTextField";
     protected static final String passwordFieldString = "JPasswordField";
     protected static final String ftfString = "JFormattedTextField";
     protected static final String buttonString = "JButton";
  
-    protected JLabel actionLabel;
+    protected final JLabel actionLabel;
  
     public TextSamplerDemo() {
         setLayout(new BorderLayout());
@@ -66,7 +65,7 @@ public class TextSamplerDemo extends JPanel
  
         JLabel[] labels = {textFieldLabel, passwordFieldLabel, ftfLabel};
         JTextField[] textFields = {textField, passwordField, ftf};
-        addLabelTextRows(labels, textFields, gridbag, textControlsPane);
+        addLabelTextRows(labels, textFields, textControlsPane);
  
         c.gridwidth = GridBagConstraints.REMAINDER; //last
         c.anchor = GridBagConstraints.WEST;
@@ -140,7 +139,6 @@ public class TextSamplerDemo extends JPanel
  
     private void addLabelTextRows(JLabel[] labels,
                                   JTextField[] textFields,
-                                  GridBagLayout gridbag,
                                   Container container) {
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.EAST;
@@ -192,6 +190,7 @@ public class TextSamplerDemo extends JPanel
     }
  
     private JTextPane createTextPane() {
+        String newline = "\n";
         String[] initString =
                 { "This is an editable JTextPane, ",            //regular
                   "another ",                                   //italic
@@ -307,12 +306,10 @@ public class TextSamplerDemo extends JPanel
     public static void main(String[] args) {
         //Schedule a job for the event dispatching thread:
         //creating and showing this application's GUI.
-        SwingUtilities.invokeLater(new Runnable() {
-            public void run() {
-                 //Turn off metal's use of bold fonts
-                UIManager.put("swing.boldMetal", Boolean.FALSE);
-                createAndShowGUI();
-            }
+        SwingUtilities.invokeLater(() -> {
+             //Turn off metal's use of bold fonts
+            UIManager.put("swing.boldMetal", Boolean.FALSE);
+            createAndShowGUI();
         });
     }
 }
