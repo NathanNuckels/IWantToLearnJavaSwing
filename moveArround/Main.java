@@ -14,8 +14,8 @@ public class Main
 
   public Main(){
     Dimension size = new Dimension(1000, 750);
-    setSize(1000,750);
-    //setResizable(false);
+    //setSize(1000,750);
+    setResizable(false);
     setTitle("Move Around");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     JLabel playerContainer = new JLabel(new ImageIcon("player.png"));
@@ -60,7 +60,14 @@ public class Main
 
   public static void main(String[] args){
     System.out.println("Loading...");
-    SwingUtilities.invokeLater(() -> new Main().setVisible(true));
+    SwingUtilities.invokeLater(new Runnable() {
+      @Override
+      public void run() {
+        Main frame = new Main();
+        frame.setSize(1000,750);
+        frame.setVisible(true);
+      }
+    });
     System.out.println("Done!");
   }
 }

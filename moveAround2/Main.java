@@ -6,12 +6,18 @@ import javax.swing.*;
 
 
 public class Main extends JFrame implements KeyListener{
+    Container contentPane;
     public Main(){
         setTitle("Hello");
         setLayout(null);
         Player player = new Player();
+        this.contentPane = getContentPane();
         JPanel panel = new JPanel();
+        panel.setBackground(Color.GREEN);
         panel.add(player);
+        panel.setLayout(null);
+        contentPane.setLayout(null);
+        contentPane.add(panel);
         add(panel);
         panel.setVisible(true);
         panel.setBorder(BorderFactory.createBevelBorder(10));
@@ -22,7 +28,14 @@ public class Main extends JFrame implements KeyListener{
 
 
     public static void main(String[] args){
-        SwingUtilities.invokeLater(() -> new Main().setVisible(true));
+        SwingUtilities.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                Main frame = new Main();
+                frame.setSize(1000,750);
+                frame.setVisible(true);
+            }
+        });
     }
 
     /**
