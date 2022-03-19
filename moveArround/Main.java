@@ -15,7 +15,7 @@ public class Main
   public Main(){
     Dimension size = new Dimension(1000, 750);
     //setSize(1000,750);
-    setResizable(false);
+    //setResizable(false);
     setTitle("Move Around");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
     JLabel playerContainer = new JLabel(new ImageIcon("player.png"));
