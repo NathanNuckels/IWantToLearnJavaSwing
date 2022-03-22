@@ -10,13 +10,7 @@ public class AngryExample2 extends JFrame {
         setTitle("hh");
         panel= new JPanel();
         ok=new JButton("ok");
-        //cancel=new JButton("cancel");
-        //pane=getContentPane();
-        //pane.setLayout(new FlowLayout());
         panel.add(ok);
-        //panel.add(cancel);
-        //pane.add(panel);
-        //add(panel);
         JLabel lab = new JLabel(new ImageIcon("moveArround/player.png"));
         add(lab);
         setDefaultCloseOperation(3);
