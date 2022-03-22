@@ -6,7 +6,6 @@ public class AngryExample2 extends JFrame {
     Container pane;
     JPanel panel;
     public AngryExample2(){
-        //super("Example");
         setTitle("hh");
         panel= new JPanel();
         ok=new JButton("ok");
