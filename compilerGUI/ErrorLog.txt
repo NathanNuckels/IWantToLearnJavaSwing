@@ -1,20 +1,16 @@
-This file logs the compiler output. When I can't compile the code, I look here for errors to fix.
+~/CompileingCodeForAThing/compilerGUI$ clear&&javac * -Xdiags:verbose
 
-~/CompileingCodeForAThing/compilerGUI$ javac *.java -Xdiags:verbose
-
-Compile.java:15
-        Scanner s = new Scanner(p.getOutputStream());
-                    ^
-//IMPORTANT!!!
-//We need to find a way to convert an OutputStream to an InputStream
-
-
+ButtonListener.java:20: error: unreported exception IOException; must be caught or declared to be thrown
+        ArrayList<String> out = compile.build(src.getText(),dest.getText());
+                                             ^
+                                             
 Compile.java:38: error: no suitable method found for directory(String)
-//Convert the directory string to a File. This applies to every "no suitable...directory(String)"
+            Process p2 = new ProcessBuilder("javac *.java").directory(output.getAbsolutePath()).start(); //To be fixed later.
+                                                           ^
 
-            Process p3 = new ProcessBuilder("del /s *.java").directory(output.getAbsolutePath()).start();
-            I dont have the line number for this.
-
+Compile.java:40: error: no suitable method found for directory(String)
+            Process p3 = new ProcessBuilder("del /s *.java").directory(output.getAbsolutePath()).start(); //To be fixed later
+                                                            ^
 
 Compile.java:43: error: cannot find symbol
             Process p1 = new ProcessBuilder("cp -r "+source.getAbsoluteDirectory()+" "+output.getAbsolutePath()).start();
@@ -22,50 +18,51 @@ Compile.java:43: error: cannot find symbol
   symbol:   method getAbsoluteDirectory()
   location: variable source of type File
   
-ErrorDialog.java:12: error: cannot find symbol
+Compile.java:45: error: no suitable method found for directory(String)
+            Process p2 = new ProcessBuilder("javac *.java").directory(output.getAbsolutePath()).start();//To be fixed later
+                                                           ^
+    method ProcessBuilder.directory() is not applicable
+      (actual and formal argument lists differ in length)
+    method ProcessBuilder.directory(File) is not applicable
+      (argument mismatch; String cannot be converted to File)
+      
+Compile.java:47: error: no suitable method found for directory(String)
+            Process p3 = new ProcessBuilder("rm -r *.java").directory(output.getAbsolutePath()).start();//To be fixed later
+                                                           ^
+    method ProcessBuilder.directory() is not applicable
+      (actual and formal argument lists differ in length)
+    method ProcessBuilder.directory(File) is not applicable
+      (argument mismatch; String cannot be converted to File)
+      
+Compile.java:51: error: cannot find symbol
+        Scanner s = new Scanner(p2.getOutputStream());
+                                ^
+  symbol:   variable p2
+  location: class Compile
+  
+ErrorDialog.java:13: error: cannot find symbol
         close.addActionListener(new ActionListener(){
                                     ^
-                                    
-ErrorDialog.java:14: error: cannot find symbol
+  symbol:   class ActionListener
+  location: class ErrorDialog
+  
+ErrorDialog.java:15: error: cannot find symbol
             public void actionPerformed(ActionEvent e){
                                         ^
-                                        
-ErrorDialog.java:13: error: method does not override or implement a method from a supertype
-//Comment out the line in repl.it but keep it in Github.
-
-ErrorDialog.java:18: error: cannot find symbol
+  symbol: class ActionEvent
+  
+ErrorDialog.java:14: error: method does not override or implement a method from a supertype
+            @Override
+            ^
+            
+ErrorDialog.java:19: error: cannot find symbol
         setLayout(new FLowLayout());
                       ^
-//Replace 'L' with 'l'
-
+  symbol:   class FLowLayout
+  location: class ErrorDialog
+  
 Main.java:7: error: Main is not abstract and does not override abstract method actionPerformed(ActionEvent) in ActionListener
 public class Main extends JFrame implements ActionListener{
        ^
-Main.java:17: error: cannot find symbol
-        buttonPanel = new JPanel();
-        ^
-  symbol:   variable buttonPanel
-  location: class Main
-Main.java:20: error: cannot find symbol
-        dest = new JTextFeild("Build path");
-                   ^
-  symbol:   class JTextFeild
-  location: class Main
-Main.java:23: error: method addActionListener in class AbstractButton cannot be applied to given types;
-        comp.addActionListener(new ButtonListener(src,dest,compile,dialog));
-            ^
-  required: ActionListener
-  found: ButtonListener
-  reason: argument mismatch; ButtonListener cannot be converted to ActionListener
-Main.java:24: error: cannot find symbol
-        buttonPanel.add(comp);
-        ^
-  symbol:   variable buttonPanel
-  location: class Main
-Main.java:26: error: cannot find symbol
-        add(buttonPanel);
-            ^
-  symbol:   variable buttonPanel
-  location: class Main
-23 errors
+13 errors
 ~/CompileingCodeForAThing/compilerGUI$ 
