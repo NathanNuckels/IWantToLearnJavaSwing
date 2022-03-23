@@ -1,5 +1,0 @@
-Compile.java:15: error: no suitable constructor found for Scanner(OutputStream)
-Compile.java:45: error: no suitable constructor found for Scanner(OutputStream)
-Compile.java:58: error: no suitable constructor found for Scanner(OutputStream)
-
-~/CompileingCodeForAThing/compilerGUI$ 
