@@ -3,8 +3,10 @@ package compilerGUI;
 import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.ArrayList;
+import java.io.IOException;
 
-public class ButtonListener extends ActionListener{
+public class ButtonListener implements ActionListener{
     private JTextField src,dest;
     private Compile compile;
     private ErrorDialog dialog;
@@ -14,11 +16,16 @@ public class ButtonListener extends ActionListener{
         this.compile = compile;
         this.dialog = errordialog;
     }
-    @Override
+    //@Override
     public void actionPerformed(ActionEvent e){
-        ArrayList<String> out = compile.build(src.getText(),dest.getText());
-        if (out.size()>0){
-            dialog.setErrorText(out);
-        }
+		try{
+        	ArrayList<String> out = compile.build(src.getText(),dest.getText());
+			if (out.size()>0){
+            	dialog.setErrorText(out);
+        	}
+		} catch (IOException ex){
+			ex.printStackTrace();
+		}
+
     }
 }
