@@ -2,33 +2,12 @@ This file logs the compiler output. When I can't compile the code, I look here f
 
 ~/CompileingCodeForAThing/compilerGUI$ javac *.java -Xdiags:verbose
 
-
-ButtonListener.java:7
-//replace 'extends' with 'implements'
-
-ErrorDialog.java
-//import java.util.ArrayList;
-
-Main.java:9:
-//Replace 'ErrorBox' with 'ErrorDialog'
-
-ButtonListener.java:17: error: method does not override or implement a method from a supertype
-    @Override
-//Comment out the line. REPL.IT does not support compiler decorations.
-
-ButtonListener.java
-//import ArrayList
-
 Compile.java:15
         Scanner s = new Scanner(p.getOutputStream());
                     ^
 //IMPORTANT!!!
 //We need to find a way to convert an OutputStream to an InputStream
 
-Compile.java:36:
-            Process p1 = new ProcessBuilder("xcopy "+source.getAbsolutePath()+" "+output.get bsolutePath()+" /s /e /y").start();
-                                                                                            ^
-                                                                               //Insert an 'A' here
 
 Compile.java:38: error: no suitable method found for directory(String)
 //Convert the directory string to a File. This applies to every "no suitable...directory(String)"
@@ -43,10 +22,6 @@ Compile.java:43: error: cannot find symbol
   symbol:   method getAbsoluteDirectory()
   location: variable source of type File
   
-
-Compile.java:45: error: no suitable method found for directory(String)   
-Compile.java:47: error: no suitable method found for directory(String)
-
 ErrorDialog.java:12: error: cannot find symbol
         close.addActionListener(new ActionListener(){
                                     ^
