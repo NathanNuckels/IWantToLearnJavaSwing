@@ -4,9 +4,10 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-public class Main extends JFrame implements ActionListener{
+public class Main extends JFrame{
+	private JPanel buttonPanel;
     private JButton comp;
-    private ErrorBox errorbox;
+    private ErrorDialog errorbox;
     private Compile compile;
     private JTextField src,dest;
     private ErrorDialog dialog;
@@ -17,9 +18,9 @@ public class Main extends JFrame implements ActionListener{
         buttonPanel = new JPanel();
         //ImageIcon compileImage = new ImageIcon("Compile.png");
         src = new JTextField("Source path");
-        dest = new JTextFeild("Build path");
+        dest = new JTextField("Build path");
         //cp = new JTextFeild("Class Path (optional)");
-        comp = new JButton("Compile")//,compileImage);
+        comp = new JButton("Compile");//,compileImage);
         comp.addActionListener(new ButtonListener(src,dest,compile,dialog));
         buttonPanel.add(comp);
         setLayout(new FlowLayout());
