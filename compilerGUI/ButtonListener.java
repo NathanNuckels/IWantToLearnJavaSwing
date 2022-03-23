@@ -19,8 +19,8 @@ public class ButtonListener implements ActionListener{
     //@Override
     public void actionPerformed(ActionEvent e){
 		try{
-        	ArrayList<String> out = compile.build(src.getText(),dest.getText());
-			if (out.size()>0){
+        	String out = compile.build(src.getText(),dest.getText());
+			if (out=="" || out==null){
             	dialog.setErrorText(out);
         	}
 		} catch (IOException ex){
