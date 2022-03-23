@@ -2,6 +2,8 @@ package compilerGUI;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
+import java.util.ArrayList;
 
 public class ErrorDialog extends JDialog{
     JButton close;
@@ -10,12 +12,12 @@ public class ErrorDialog extends JDialog{
         text = new JTextField();
         close = new JButton("Close");
         close.addActionListener(new ActionListener(){
-            @Override
+            //@Override
             public void actionPerformed(ActionEvent e){
                 setVisible(false);
             }
-        };
-        setLayout(new FLowLayout());
+        });
+        setLayout(new FlowLayout());
         add(text);
         add(close);
     }
