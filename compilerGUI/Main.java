@@ -4,9 +4,6 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.awt.*;
 
-//TODO
-// ButtonListener extends ActionListener
-// ErrorDialog extends JDialog
 public class Main extends JFrame implements ActionListener{
     private JButton comp;
     private ErrorBox errorbox;
@@ -18,12 +15,12 @@ public class Main extends JFrame implements ActionListener{
         dialog = new ErrorDialog();
         setTitle("Java Compiler");
         buttonPanel = new JPanel();
-        ImageIcon compileImage = new ImageIcon("Compile.png");
+        //ImageIcon compileImage = new ImageIcon("Compile.png");
         src = new JTextField("Source path");
         dest = new JTextFeild("Build path");
         //cp = new JTextFeild("Class Path (optional)");
-        comp = new JButton("Compile",compileImage);
-        comp.addActionListener(new ButtonListener(src,dest,compile));
+        comp = new JButton("Compile")//,compileImage);
+        comp.addActionListener(new ButtonListener(src,dest,compile,dialog));
         buttonPanel.add(comp);
         setLayout(new FlowLayout());
         add(buttonPanel);
