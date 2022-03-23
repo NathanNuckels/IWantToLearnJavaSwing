@@ -21,12 +21,8 @@ public class ErrorDialog extends JDialog{
         add(text);
         add(close);
     }
-    public void setErrorText(ArrayList<String> t){
-        String displayString = "";
-        for (String i:t){
-            displayString+=i;
-        }
-        text.setText(displayString);
+    public void setErrorText(String t){
+        text.setText(t);
         setVisible(true);
     }
 }
