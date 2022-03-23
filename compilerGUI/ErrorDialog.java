@@ -1,10 +1,7 @@
-//JDialog
-//ErrorDialog
-
 package compilerGUI;
+
 import javax.swing.*;
 import java.awt.*;
-//import java.awt.event.*;
 
 public class ErrorDialog extends JDialog{
     JButton close;
