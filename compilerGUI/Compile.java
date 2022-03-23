@@ -5,19 +5,14 @@ import java.util.Scanner;
 import java.util.ArrayList;
 
 public class Compile{
-    public ArrayList<String> compile(String directory){
+    public String compile(String directory) throws IOException{
         ProcessBuilder compileBuilder = new ProcessBuilder("javac *.java").directory(new File(directory));
         Process p = compileBuilder.start();
         while (!p.isAlive()){
             System.out.println("Waiting for compiler...");
         }
         System.out.println("Done.\n");
-        Scanner s = new Scanner(Coverter.convert(p.getOutputStream()));
-        ArrayList<String> output = new ArrayList<String>();
-        while (s.hasNextLine()){
-            output.add(s.nextLine());
-        }
-        return output;
+        return Converter.convert(p);
     }
     public void printArray(ArrayList<String> data){
         for(String i:data){
@@ -25,7 +20,7 @@ public class Compile{
         }
         return;
     }
-    public ArrayList<String> build(String sourcePath, String outputPath) throws IOException{
+    public String build(String sourcePath, String outputPath) throws IOException{
         boolean windows = System.getProperty("os.name").toLowerCase().contains("windows");
         File source = new File(sourcePath);
         File output = new File(outputPath);
@@ -41,12 +36,7 @@ public class Compile{
             while(p2.isAlive()){;}
             Process p3 = new ProcessBuilder("del /s *.java").directory(finaldest).start(); //To be fixed later
             while(p3.isAlive()){;}
-            ArrayList<String> o = new ArrayList<String>();
-            Scanner s = new Scanner(Converter.convert(p2.getOutputStream()));
-            while(s.hasNextLine()){
-                o.add(s.nextLine());
-            }
-            return o;
+            return Converter.convert(p2);
         } else {
             Process p1 = new ProcessBuilder("cp -r "+source.getAbsolutePath()+" "+output.getAbsolutePath()).start();
             while(p1.isAlive()){;}
@@ -54,12 +44,7 @@ public class Compile{
             while(p2.isAlive()){;}
             Process p3 = new ProcessBuilder("rm -r *.java").directory(finaldest).start();//To be fixed later
             while(p3.isAlive()){;}
-            ArrayList<String> o = new ArrayList<String>();
-            Scanner s = new Scanner(Converter.convert(p2.getOutputStream()));
-            while(s.hasNextLine()){
-                o.add(s.nextLine());
-            }
-            return o;
+            return Converter.convert(p2);
         }
         
     }
