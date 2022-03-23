@@ -23,7 +23,7 @@ public class Main extends JFrame implements ActionListener{
         dest = new JTextFeild("Build path");
         //cp = new JTextFeild("Class Path (optional)");
         comp = new JButton("Compile",compileImage);
-        comp.addActionListener(new ButtonListener(src,dest));
+        comp.addActionListener(new ButtonListener(src,dest,compile));
         buttonPanel.add(comp);
         setLayout(new FlowLayout());
         add(buttonPanel);
