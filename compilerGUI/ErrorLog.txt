@@ -1,140 +1,68 @@
-Compile.java:12: error: ';' expected
-            System.out.println("Waiting for compiler...") //Fixed
-                                                         ^
-Compile.java:23: error: ')' expected
-        while(String i:data){ //Replaced 'while' with 'for'
-                    ^
-Compile.java:23: error: not a statement
-        while(String i:data){ //fixed
-                       ^
-Compile.java:23: error: ';' expected
-        while(String i:data){ //fixed
-                           ^
-ErrorDialog.java:17: error: ')' expected
-        }; //Fixed
-         ^
-Main.java:22: error: ';' expected
-        comp = new JButton("Compile")//,compileImage); //Fixed
-                                     ^
-6 errors
+This file logs the compiler output. When I can't compile the code, I look here for errors to fix.
+
 ~/CompileingCodeForAThing/compilerGUI$ javac *.java -Xdiags:verbose
 
-ButtonListener.java:7: error: no interface expected here
-public class ButtonListener extends ActionListener{
-                                    ^
-ErrorDialog.java:22: error: cannot find symbol
-    public void setErrorText(ArrayList<String> t){
-                             ^
-  symbol:   class ArrayList
-  location: class ErrorDialog
-Main.java:9: error: cannot find symbol
-    private ErrorBox errorbox;
-            ^
-  symbol:   class ErrorBox
-  location: class Main
+
+ButtonListener.java:7
+//replace 'extends' with 'implements'
+
+ErrorDialog.java
+//import java.util.ArrayList;
+
+Main.java:9:
+//Replace 'ErrorBox' with 'ErrorDialog'
+
 ButtonListener.java:17: error: method does not override or implement a method from a supertype
     @Override
-    ^
-ButtonListener.java:19: error: cannot find symbol
-        ArrayList<String> out = compile.build(src.getText(),dest.getText());
-        ^
-  symbol:   class ArrayList
-  location: class ButtonListener
-Compile.java:15: error: no suitable constructor found for Scanner(OutputStream)
+//Comment out the line. REPL.IT does not support compiler decorations.
+
+ButtonListener.java
+//import ArrayList
+
+Compile.java:15
         Scanner s = new Scanner(p.getOutputStream());
                     ^
-    constructor Scanner.Scanner(Readable,Pattern) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Scanner.Scanner(Readable) is not applicable
-      (argument mismatch; OutputStream cannot be converted to Readable)
-    constructor Scanner.Scanner(InputStream) is not applicable
-      (argument mismatch; OutputStream cannot be converted to InputStream)
-    constructor Scanner.Scanner(InputStream,String) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Scanner.Scanner(InputStream,Charset) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Scanner.Scanner(File) is not applicable
-      (argument mismatch; OutputStream cannot be converted to File)
-    constructor Scanner.Scanner(File,String) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Scanner.Scanner(File,Charset) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Scanner.Scanner(File,CharsetDecoder) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Scanner.Scanner(Path) is not applicable
-      (argument mismatch; OutputStream cannot be converted to Path)
-    constructor Scanner.Scanner(Path,String) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Scanner.Scanner(Path,Charset) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Scanner.Scanner(String) is not applicable
-      (argument mismatch; OutputStream cannot be converted to String)
-    constructor Scanner.Scanner(ReadableByteChannel) is not applicable
-      (argument mismatch; OutputStream cannot be converted to ReadableByteChannel)
-    constructor Scanner.Scanner(ReadableByteChannel,String) is not applicable
-      (actual and formal argument lists differ in length)
-    constructor Scanner.Scanner(ReadableByteChannel,Charset) is not applicable
-      (actual and formal argument lists differ in length)
-Compile.java:36: error: cannot find symbol
-            Process p1 = new ProcessBuilder("xcopy "+source.getAbsolutePath()+" "+output.getbsolutePath()+" /s /e /y").start();
-                                                                                        ^
-  symbol:   method getbsolutePath()
-  location: variable output of type File
+//IMPORTANT!!!
+//We need to find a way to convert an OutputStream to an InputStream
+
+Compile.java:36:
+            Process p1 = new ProcessBuilder("xcopy "+source.getAbsolutePath()+" "+output.get bsolutePath()+" /s /e /y").start();
+                                                                                            ^
+                                                                               //Insert an 'A' here
+
 Compile.java:38: error: no suitable method found for directory(String)
-            Process p2 = new ProcessBuilder("javac *.java").directory(output.getAbsolutePath()).start();
-                                                           ^
-    method ProcessBuilder.directory() is not applicable
-      (actual and formal argument lists differ in length)
-    method ProcessBuilder.directory(File) is not applicable
-      (argument mismatch; String cannot be converted to File)
-Compile.java:40: error: no suitable method found for directory(String)
+//Convert the directory string to a File. This applies to every "no suitable...directory(String)"
+
             Process p3 = new ProcessBuilder("del /s *.java").directory(output.getAbsolutePath()).start();
-                                                            ^
-    method ProcessBuilder.directory() is not applicable
-      (actual and formal argument lists differ in length)
-    method ProcessBuilder.directory(File) is not applicable
-      (argument mismatch; String cannot be converted to File)
+            I dont have the line number for this.
+
+
 Compile.java:43: error: cannot find symbol
             Process p1 = new ProcessBuilder("cp -r "+source.getAbsoluteDirectory()+" "+output.getAbsolutePath()).start();
                                                            ^
   symbol:   method getAbsoluteDirectory()
   location: variable source of type File
-Compile.java:45: error: no suitable method found for directory(String)
-            Process p2 = new ProcessBuilder("javac *.java").directory(output.getAbsolutePath()).start();
-                                                           ^
-    method ProcessBuilder.directory() is not applicable
-      (actual and formal argument lists differ in length)
-    method ProcessBuilder.directory(File) is not applicable
-      (argument mismatch; String cannot be converted to File)
+  
+
+Compile.java:45: error: no suitable method found for directory(String)   
 Compile.java:47: error: no suitable method found for directory(String)
-            Process p3 = new ProcessBuilder("rm -r *.java").directory(output.getAbsolutePath()).start();
-                                                           ^
-    method ProcessBuilder.directory() is not applicable
-      (actual and formal argument lists differ in length)
-    method ProcessBuilder.directory(File) is not applicable
-      (argument mismatch; String cannot be converted to File)
-Compile.java:51: error: cannot find symbol
-        Scanner s = new Scanner(p2.getOutputStream());
-                                ^
-  symbol:   variable p2
-  location: class Compile
+
 ErrorDialog.java:12: error: cannot find symbol
         close.addActionListener(new ActionListener(){
                                     ^
-  symbol:   class ActionListener
-  location: class ErrorDialog
+                                    
 ErrorDialog.java:14: error: cannot find symbol
             public void actionPerformed(ActionEvent e){
                                         ^
-  symbol: class ActionEvent
+                                        
 ErrorDialog.java:13: error: method does not override or implement a method from a supertype
-            @Override
-            ^
+//Comment out the line in repl.it but keep it in Github.
+
 ErrorDialog.java:18: error: cannot find symbol
         setLayout(new FLowLayout());
                       ^
-  symbol:   class FLowLayout
-  location: class ErrorDialog
+//Replace 'L' with 'l'
+
 Main.java:7: error: Main is not abstract and does not override abstract method actionPerformed(ActionEvent) in ActionListener
 public class Main extends JFrame implements ActionListener{
        ^
